@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMinder - Smart Energy Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1><i class="fas fa-leaf"></i> EcoMinder</h1>
+            </header>
+
+            <section class="widget">
+                <h3 class="widget-title">Select Device</h3>
+                <div class="form-group">
+                    <select id="device-selector" class="form-control">
+                        <option value="Furnace 1 [kW]">Furnace 1</option>
+                        <option value="Dishwasher [kW]">Dishwasher</option>
+                        <option value="Microwave [kW]">Microwave</option>
+                        <option value="Home office [kW]">Home Office</option>
+                        <option value="Fridge [kW]">Fridge</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="widget">
+                <h3 class="widget-title">Live Prediction</h3>
+                <div class="prediction-display">
+                    <div id="prediction-value">--.--</div>
+                    <div class="unit">kW</div>
+                </div>
+                <div class="prediction-info">
+                    Predicted usage for <strong id="prediction-appliance">--</strong>
+                </div>
+                <div class="last-updated" id="last-updated">Updating...</div>
+            </section>
+            
+            <section id="efficiency-widget" class="widget" style="display: none;">
+                <h3 class="widget-title">Efficiency Score</h3>
+                <div class="efficiency-display">
+                    <div id="efficiency-value" class="score-value">--%</div>
+                    <div id="efficiency-text" class="score-text">Connect sensor to analyze.</div>
+                </div>
+            </section>
+
+            <section class="widget">
+                <h3 class="widget-title">EcoMinder Suggestions</h3>
+                <div class="suggestion-box">
+                    <div class="suggestion-icon"><i class="fas fa-lightbulb"></i></div>
+                    <p id="suggestion-text">Select a device to get started...</p>
+                </div>
+            </section>
+
+            <section class="widget">
+                <h3 class="widget-title">Smart Sensor</h3>
+                <div class="sensor-status">
+                    Status: <span id="sensor-status" class="disconnected">Disconnected</span>
+                </div>
+                <button id="connect-sensor-btn" class="btn">Connect Sensor</button>
+            </section>
+
+        </aside>
+
+        <main class="main-content">
+            <div class="main-header">
+                <h2>Today's Energy Forecast</h2>
+                <p id="main-header-subtitle">Predicted usage based on today's hourly weather forecast.</p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="forecastChart"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
